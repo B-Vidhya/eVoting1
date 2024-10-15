@@ -1,0 +1,46 @@
+# Ignore node_modules from both frontend and backend
+frontend/node_modules/
+backend/node_modules/
+
+# Ignore logs and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+
+# Ignore .env files that contain sensitive environment variables
+frontend/.env
+backend/.env
+
+# Ignore frontend build artifacts
+frontend/build/
+frontend/dist/
+
+# Ignore operating system specific files
+.DS_Store
+Thumbs.db
+
+# IDE or Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+
+# Ignore coverage reports from tests
+frontend/coverage/
+backend/coverage/
+.nyc_output/
+
+# Ignore cache files from React
+frontend/.eslintcache
+frontend/*.cache
+
+# Ignore any additional temporary folders or files that might appear
+*.swp
+*.bak
+*.tmp
