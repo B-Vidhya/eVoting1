@@ -1,0 +1,31 @@
+/* Home Component */
+.home-container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .dashboard-cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .events-container ul {
+    list-style-type: none;
+  }
+  
+  .events-container li {
+    padding: 10px;
+    background-color: #ececec;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  
+  /* More CSS as required */
+  

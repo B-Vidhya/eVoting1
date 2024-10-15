@@ -1,0 +1,102 @@
+/* styles.css */
+
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f2fa; /* Light purplish background */
+    color: #4b2c91; /* Primary text color */
+  }
+  
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #4b2c91; /* Deep purple color for the headings */
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #6c4ccf !important; /* Light purplish color for navbar */
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #d1c4ff !important; /* Slightly lighter shade on hover */
+  }
+  
+  /* Card Styles */
+  .card {
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(108, 76, 207, 0.2);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b2c91;
+  }
+  
+  .card-text {
+    color: #6c4ccf;
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color:  #6c4ccf !important;
+    color: #ffffff;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  footer a {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: #d1c4ff;
+  }
+  
+  /* Container Adjustments */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
