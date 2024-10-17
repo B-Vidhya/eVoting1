@@ -1,0 +1,104 @@
+/* General container styling */
+.admin-create-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #f2e9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+  
+  /* Form header */
+  .admin-create-container h2 {
+    color: #5a2675;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Form styling */
+  .admin-create-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-create-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-create-form label {
+    font-weight: 500;
+    color: #4a1e5c;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .admin-create-form input[type="text"],
+  .admin-create-form input[type="date"],
+  .admin-create-form textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #c0b0d6;
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s;
+  }
+  
+  .admin-create-form input[type="text"]:focus,
+  .admin-create-form input[type="date"]:focus,
+  .admin-create-form textarea:focus {
+    border-color: #5a2675;
+    outline: none;
+  }
+  
+  /* File input styling */
+  .admin-create-form input[type="file"] {
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid #c0b0d6;
+    background-color: #ffffff;
+    font-size: 1rem;
+  }
+  
+  /* Submit button styling */
+  .admin-create-form button {
+    background-color: #5a2675;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-create-form button:hover {
+    background-color: #441c5a;
+  }
+  
+  /* Date picker styling */
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container input {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #c0b0d6;
+    background-color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .admin-create-container {
+      padding: 1.5rem;
+    }
+  
+    .admin-create-form button {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  }
+  
