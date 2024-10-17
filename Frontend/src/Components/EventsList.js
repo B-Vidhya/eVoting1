@@ -9,8 +9,8 @@ import Logo from "../Images/AV.jpg";
 import '../Styles/EventsList.css';
 
 
-const nominationStartDate = new Date('2024-08-29'); // Replace with your actual dates
-const nominationEndDate = new Date('2024-09-15');
+const nominationStartDate = new Date('2024-10-14'); // Replace with your actual dates
+const nominationEndDate = new Date('2024-10-18');
 const electionStartDate = new Date('2024-09-29');
 const electionEndDate = new Date('2024-09-30');
 const resultsDate = new Date('2024-09-29');
