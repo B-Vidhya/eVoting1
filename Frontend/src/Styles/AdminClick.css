@@ -1,99 +1,51 @@
-/* AdminClick.css
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
-  
-  .admin-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .admin-content {
-    flex-grow: 1;
-    padding: 40px;
-    text-align: center;
-    background-color: #f0f0f5;
-  }
-  
-  .admin-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-  }
-  
-  .admin-button {
-    background-color: #8e44ad;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .admin-button:hover {
-    background-color: #6f3490;
-  }
-  
-  footer {
-    background-color: #6f3490;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    flex-shrink: 0;
-  }
-   */
-   .admin-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f2f0ff; /* Light purplish background */
-  }
-  
-  .admin-content {
-    flex-grow: 1;
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .admin-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  .admin-button {
-    background-color: #6f42c1; /* Purple */
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    margin: 0 10px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-button:hover {
-    background-color: #563d7c;
-  }
-  
-  .admin-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-  }
-  
+.admin-click-container {
+  min-height: calc(100vh - 120px); /* Adjusted to keep footer at the bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.admin-title {
+  font-size: 2.5rem;
+  color: #6b4fad; /* Purplish color for the title */
+  margin-bottom: 2rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-custom {
+  background-color: #9370DB;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #6b4fad; /* Darker purplish shade on hover */
+}
+
+.active-btn {
+  background-color: #4B0082; /* Active button in darker purple */
+}
+
+.inactive-btn {
+  background-color: #8A2BE2; /* Inactive button in a different shade of purple */
+}
+
+.btn-custom:focus, .btn-custom:active {
+  outline: none;
+  box-shadow: none;
+}
+
+footer {
+  margin-top: auto;
+}

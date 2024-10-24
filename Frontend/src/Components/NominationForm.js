@@ -35,6 +35,11 @@ const NominationForm = () => {
                 <Form.Control type="text" placeholder="Enter your name" required />
               </Form.Group>
 
+              <Form.Group controlId="formRollNumber" className="mt-3">
+                <Form.Label>Roll Number</Form.Label>
+                <Form.Control type="text" placeholder="Enter your roll number" required />
+              </Form.Group>
+
               <Form.Group controlId="formEmail" className="mt-3">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" placeholder="Enter your email" required />

@@ -16,7 +16,9 @@ const Home = () => {
           <h1 className="site-title">AspireVote</h1>
         </div>
         <nav>
-          <a href="/signup" className="login-button">Login</a>
+          {/* Replaced Login Button with Admin/User Buttons */}
+          <a href="/user-login" className="login-button">User</a>
+          <a href="/signup" className="login-button">Admin</a>
         </nav>
       </header>
 

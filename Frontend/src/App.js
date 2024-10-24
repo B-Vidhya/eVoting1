@@ -12,6 +12,8 @@ import InactiveEventPage from "./Components/InactiveEventPage"; // Add this for 
 import AdminClick from './Components/AdminClick';
 import AdminNominationsList from './Components/AdminNominationsList';
 import AdminCreate from './Components/AdminCreate'; 
+import UserLoginPage from "./Components/UserLoginPage";
+import VotingPhase from './Components/VotingPhase';
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
           {/* Nomination Form */}
           <Route path="/nomination/:eventId" element={<NominationForm />} />
 
+          
+          <Route path="/user-login" element={<UserLoginPage />} /> {/* UserLoginPage route */}
+
           {/* Admin-specific Routes */}
           <Route path="/admin/candidates" element={<AdminViewCandidates />} />
 
@@ -43,9 +48,10 @@ function App() {
         <Route path="/admin/nominations" element={<AdminNominationsList />} />
         {/* <Route path="/admin/results" element={<AdminResults/>} /> */}
         <Route path="/admin/create" element={<AdminCreate />} />
+        
 
           {/* Voting and Result Pages */}
-          <Route path="/voting/:eventId" element={<VotingPage />} />
+          <Route path="/voting/:eventId" element={<VotingPhase />} />
           <Route path="/results" element={<ResultPage />} />
 
           {/* Inactive Event Page */}
