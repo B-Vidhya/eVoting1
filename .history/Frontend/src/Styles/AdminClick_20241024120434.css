@@ -1,0 +1,51 @@
+.admin-click-container {
+  min-height: calc(100vh - 120px); /* Adjusted to keep footer at the bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.admin-title {
+  font-size: 2.5rem;
+  color: #6b4fad; /* Purplish color for the title */
+  margin-bottom: 2rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-custom {
+  background-color: #9370DB;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #6b4fad; /* Darker purplish shade on hover */
+}
+
+.active-btn {
+  background-color: #4B0082; /* Active button in darker purple */
+}
+
+.inactive-btn {
+  background-color: #8A2BE2; /* Inactive button in a different shade of purple */
+}
+
+.btn-custom:focus, .btn-custom:active {
+  outline: none;
+  box-shadow: none;
+}
+
+footer {
+  margin-top: auto;
+}
