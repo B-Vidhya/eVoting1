@@ -65,7 +65,7 @@ const AdminClick = () => {
   };
 
   const handleResultsClick = () => {
-    navigate('/results');
+    navigate('/admin/results');
   };
 
   const handleActiveClick = () => {

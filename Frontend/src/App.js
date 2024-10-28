@@ -7,13 +7,15 @@ import EventsList from "./Components/EventsList";
 import NominationForm from "./Components/NominationForm";
 import AdminViewCandidates from "./Components/AdminViewCandidates";
 import VotingPage from "./Components/VotingPage";
-import ResultPage from "./Components/ResultPage";
+// import ResultPage from "./Components/ResultPage";
 import InactiveEventPage from "./Components/InactiveEventPage"; // Add this for inactive events
 import AdminClick from './Components/AdminClick';
 import AdminNominationsList from './Components/AdminNominationsList';
 import AdminCreate from './Components/AdminCreate'; 
 import UserLoginPage from "./Components/UserLoginPage";
 import VotingPhase from './Components/VotingPhase';
+import AdminResult from './Components/AdminResult';
+import UserResult from './Components/UserResult';
 
 
 function App() {
@@ -49,10 +51,15 @@ function App() {
         {/* <Route path="/admin/results" element={<AdminResults/>} /> */}
         <Route path="/admin/create" element={<AdminCreate />} />
         
+         {/* Admin Result page */}
+         <Route path="/admin/results" element={<AdminResult />} />
+
+           {/* User Result page */}
+          <Route path="/user/results" element={<UserResult />} />
 
           {/* Voting and Result Pages */}
           <Route path="/voting/:eventId" element={<VotingPhase />} />
-          <Route path="/results" element={<ResultPage />} />
+          {/* <Route path="/results" element={<ResultPage />} /> */}
 
           {/* Inactive Event Page */}
           <Route path="/inactive" element={<InactiveEventPage />} />
