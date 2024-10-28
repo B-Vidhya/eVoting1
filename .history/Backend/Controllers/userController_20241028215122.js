@@ -136,7 +136,7 @@ const resendOtp = asyncHandler(async (req, res) => {
 // Verify OTP
 const verifyOtp = asyncHandler(async (req, res) => {
   const { email, otp } = req.body;
-  const user = await User.findOne({ email });
+
   const otpRecord = await OTP.findOne({ email, otp });
   if (!otpRecord) {
     return res.status(400).json({ message: "Invalid or expired OTP." });
@@ -147,10 +147,7 @@ const verifyOtp = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "OTP expired." });
   }
 
-  res.status(200).json({
-    email: user.email,
-    type: user.type,
-  });
+  res.status(200).json({ message: "OTP verified!" });
 });
 
 module.exports = {

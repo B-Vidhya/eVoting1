@@ -1,5 +1,5 @@
 const Nomination = require("../Models/NominationModel"); // Import your nomination model
-const Voter = require("../Models/VoterModel");
+
 // Controller to create a new nomination
 const createNomination = async (req, res) => {
   try {
@@ -67,16 +67,7 @@ const getAcceptedNominations = async (req, res) => {
 const submitVotes = async (req, res) => {
   try {
     const eventId = req.params.eventId;
-    const { userId } = req.body; // Assume the user ID is sent in the request
     const { selectedStudent } = req.body;
-
-    // Check if the user has already voted for this event
-    const existingVote = await Voter.findOne({ userId, eventId });
-    if (existingVote) {
-      return res
-        .status(400)
-        .json({ message: "You have already voted for this event." });
-    }
 
     // Iterate over each role and update the selected student's nomination
     for (const [role, studentId] of Object.entries(selectedStudent)) {
@@ -86,10 +77,6 @@ const submitVotes = async (req, res) => {
         { new: true }
       );
     }
-
-    // Save the user's vote in the Voter collection
-    const newVote = new Voter({ userId, eventId });
-    await newVote.save();
 
     res.status(200).json({ message: "Votes submitted successfully" });
   } catch (error) {

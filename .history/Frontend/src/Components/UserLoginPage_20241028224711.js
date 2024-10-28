@@ -44,7 +44,7 @@ const UserLoginPage = () => {
       startResendTimer(); // Start the resend timer
     } catch (error) {
       toast({
-        title: "USER NOT FOUND",
+        title: "Error sending OTP",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -113,8 +113,8 @@ const UserLoginPage = () => {
         isClosable: true,
         position: "top",
       });
-      localStorage.setItem("userinfo", JSON.stringify(data));
-      navigate("/events");
+      localStorage.setItem("adminInfo", JSON.stringify(data));
+      navigate("/admin-dashboard");
     } catch (error) {
       toast({
         title: "Invalid OTP",

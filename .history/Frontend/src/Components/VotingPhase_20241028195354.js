@@ -9,7 +9,6 @@ import "../Styles/VotingPhase.css";
 const VotingPhase = () => {
   const [acceptedNominations, setAcceptedNominations] = useState({});
   const [selectedStudent, setSelectedStudent] = useState({});
-  const [hasVoted, setHasVoted] = useState(false);
   const { eventId } = useParams();
   const navigate = useNavigate();
 
@@ -51,26 +50,14 @@ const VotingPhase = () => {
   };
 
   const handleSubmit = async () => {
-    if (hasVoted) {
-      toast.error("You have already voted in this event.");
-      return;
-    }
-
     try {
-      const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-      const userId = userInfo ? userInfo._id : null;
-
+      const userId = "USER_ID_HERE"; // Replace with the actual user ID from your authentication context
       await axios.post(
         `http://localhost:5000/api/nominations/submit-votes/${eventId}`,
         { selectedStudent, userId } // Include userId in the request body
       );
-
-      toast.success("You have successfully voted!"); // Toast message for successful voting
-
-      // Redirect to events page after 5 seconds
-      setTimeout(() => {
-        navigate("/events");
-      }, 5000); // 5000 milliseconds = 5 seconds
+      toast.success("Votes submitted successfully!");
+      navigate("/events"); // Redirect to events page after successful submission
     } catch (error) {
       console.error("Error submitting votes:", error);
       if (error.response && error.response.status === 400) {

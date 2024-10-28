@@ -44,7 +44,7 @@ const UserLoginPage = () => {
       startResendTimer(); // Start the resend timer
     } catch (error) {
       toast({
-        title: "USER NOT FOUND",
+        title: "Error sending OTP",
         status: "error",
         duration: 5000,
         isClosable: true,

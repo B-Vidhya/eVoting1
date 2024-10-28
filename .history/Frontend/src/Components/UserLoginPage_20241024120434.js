@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import login from "../Images/login.svg";
@@ -9,11 +9,9 @@ import axios from "axios";
 
 const UserLoginPage = () => {
   const [email, setEmail] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
+  const [otpSent, setOtpSent] = useState(false); // OTP field visibility
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
-  const [resendDisabled, setResendDisabled] = useState(false);
-  const [timer, setTimer] = useState(0);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -31,8 +29,9 @@ const UserLoginPage = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/api/user/send-otp", { email });
-      setOtpSent(true);
+      // Make API call to send OTP
+      await axios.post("http://localhost:5000/api/admin/send-otp", { email });
+      setOtpSent(true); // Show OTP input field
       toast({
         title: "OTP Sent!",
         status: "success",
@@ -41,10 +40,9 @@ const UserLoginPage = () => {
         position: "top",
       });
       setLoading(false);
-      startResendTimer(); // Start the resend timer
     } catch (error) {
       toast({
-        title: "USER NOT FOUND",
+        title: "Error sending OTP",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -55,20 +53,9 @@ const UserLoginPage = () => {
   };
 
   const handleResendOTP = async () => {
-    if (resendDisabled) {
-      toast({
-        title: "Please wait before resending OTP",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-      });
-      return;
-    }
-
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/user/resend-otp", { email });
+      await axios.post("http://localhost:5000/api/admin/resend-otp", { email });
       toast({
         title: "OTP Resent!",
         status: "success",
@@ -76,7 +63,6 @@ const UserLoginPage = () => {
         isClosable: true,
         position: "top",
       });
-      startResendTimer(); // Start the resend timer
     } catch (error) {
       toast({
         title: "Error resending OTP",
@@ -102,10 +88,7 @@ const UserLoginPage = () => {
       return;
     }
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/api/user/verify-otp",
-        { email, otp }
-      );
+      const { data } = await axios.post("http://localhost:5000/api/admin/login", { email, otp });
       toast({
         title: "Login Successful!",
         status: "success",
@@ -113,8 +96,8 @@ const UserLoginPage = () => {
         isClosable: true,
         position: "top",
       });
-      localStorage.setItem("userinfo", JSON.stringify(data));
-      navigate("/events");
+      localStorage.setItem("adminInfo", JSON.stringify(data));
+      navigate("/admin-dashboard");
     } catch (error) {
       toast({
         title: "Invalid OTP",
@@ -126,28 +109,6 @@ const UserLoginPage = () => {
     }
   };
 
-  const startResendTimer = () => {
-    setResendDisabled(true);
-    setTimer(30); // Set to 30 seconds for demo; adjust as necessary
-    const countdown = setInterval(() => {
-      setTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(countdown);
-          setResendDisabled(false);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-  };
-
-  useEffect(() => {
-    return () => {
-      setResendDisabled(false);
-      setTimer(0);
-    };
-  }, []);
-
   return (
     <Container
       fluid
@@ -158,6 +119,7 @@ const UserLoginPage = () => {
         className="shadow-lg rounded-lg bg-white overflow-hidden w-100"
         style={{ maxWidth: "1200px" }}
       >
+        {/* Left Section */}
         <Col
           lg={6}
           className="d-flex flex-column justify-content-center align-items-center p-5"
@@ -216,16 +178,16 @@ const UserLoginPage = () => {
                   variant="primary"
                   className="w-100 mt-3 py-3 shadow-sm"
                   onClick={handleResendOTP}
-                  disabled={resendDisabled} // Disable when timer is active
                   style={{ backgroundColor: "#6c4ccf" }}
                 >
-                  {resendDisabled ? `Resend OTP (${timer}s)` : "Resend OTP"}
+                  Resend OTP
                 </Button>
               </>
             )}
           </Form>
         </Col>
 
+        {/* Right Section */}
         <Col
           lg={6}
           className="d-none d-lg-flex justify-content-center align-items-center bg-primary text-white"
@@ -249,6 +211,7 @@ const UserLoginPage = () => {
 };
 
 export default UserLoginPage;
+
 
 // import React, { useState } from "react";
 // import { Container, Row, Col, Form } from "react-bootstrap";
@@ -281,7 +244,7 @@ export default UserLoginPage;
 
 //     try {
 //       setLoading(true);
-
+      
 //       // Simulating OTP sending process
 //       setTimeout(() => {
 //         setOtpSent(true); // Show OTP input field
@@ -294,7 +257,7 @@ export default UserLoginPage;
 //         });
 //         setLoading(false);
 //       }, 2000); // Simulate a 2-second delay for sending OTP
-
+      
 //     } catch (error) {
 //       toast({
 //         title: "Error sending OTP",
@@ -321,7 +284,7 @@ export default UserLoginPage;
 //         });
 //         setLoading(false);
 //       }, 2000); // Simulate a 2-second delay for resending OTP
-
+      
 //     } catch (error) {
 //       toast({
 //         title: "Error resending OTP",

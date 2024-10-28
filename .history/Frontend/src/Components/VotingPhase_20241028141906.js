@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Import axios for API requests
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
-import { useParams, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify"; // Import toast and ToastContainer for notifications
-import "react-toastify/dist/ReactToastify.css"; // Import toastify CSS
 import "../Styles/VotingPhase.css";
 
-const VotingPhase = () => {
+const VotingPhase = ({ eventId }) => {
   const [acceptedNominations, setAcceptedNominations] = useState({});
   const [selectedStudent, setSelectedStudent] = useState({});
-  const [hasVoted, setHasVoted] = useState(false);
-  const { eventId } = useParams();
-  const navigate = useNavigate();
 
   // Fetch accepted nominations on component mount
   useEffect(() => {
     const fetchAcceptedNominations = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/nominations/accepted/${eventId}`
+          `/api/nominations/accepted/${eventId}`
         );
-        console.log(response.data);
         const nominationsByRole = response.data.reduce((acc, nomination) => {
           const role = nomination.role;
           if (!acc[role]) acc[role] = [];
@@ -30,7 +23,6 @@ const VotingPhase = () => {
         setAcceptedNominations(nominationsByRole);
       } catch (error) {
         console.error("Error fetching accepted nominations:", error);
-        toast.error("Failed to fetch accepted nominations.");
       }
     };
     fetchAcceptedNominations();
@@ -50,35 +42,10 @@ const VotingPhase = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-    if (hasVoted) {
-      toast.error("You have already voted in this event.");
-      return;
-    }
-
-    try {
-      const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-      const userId = userInfo ? userInfo._id : null;
-
-      await axios.post(
-        `http://localhost:5000/api/nominations/submit-votes/${eventId}`,
-        { selectedStudent, userId } // Include userId in the request body
-      );
-
-      toast.success("You have successfully voted!"); // Toast message for successful voting
-
-      // Redirect to events page after 5 seconds
-      setTimeout(() => {
-        navigate("/events");
-      }, 5000); // 5000 milliseconds = 5 seconds
-    } catch (error) {
-      console.error("Error submitting votes:", error);
-      if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.message); // Show specific error message
-      } else {
-        toast.error("Failed to submit votes.");
-      }
-    }
+  const handleSubmit = () => {
+    console.log("Selected Students:", selectedStudent);
+    alert("Votes submitted successfully!");
+    // Additional submission logic here
   };
 
   return (
@@ -93,6 +60,7 @@ const VotingPhase = () => {
           </Nav>
         </Container>
       </Navbar>
+
       <Container className="my-5">
         {Object.keys(acceptedNominations).map((role) => (
           <div key={role} className="role-container">
@@ -142,8 +110,8 @@ const VotingPhase = () => {
           </Button>
         </div>
       </Container>
+
       <footer className="footer">Voting System © 2024</footer>
-      <ToastContainer /> {/* Add ToastContainer here */}
     </div>
   );
 };

@@ -9,7 +9,6 @@ import "../Styles/VotingPhase.css";
 const VotingPhase = () => {
   const [acceptedNominations, setAcceptedNominations] = useState({});
   const [selectedStudent, setSelectedStudent] = useState({});
-  const [hasVoted, setHasVoted] = useState(false);
   const { eventId } = useParams();
   const navigate = useNavigate();
 
@@ -28,6 +27,9 @@ const VotingPhase = () => {
           return acc;
         }, {});
         setAcceptedNominations(nominationsByRole);
+
+        // Check if the user has already voted
+        await checkIfVoted();
       } catch (error) {
         console.error("Error fetching accepted nominations:", error);
         toast.error("Failed to fetch accepted nominations.");
@@ -35,6 +37,34 @@ const VotingPhase = () => {
     };
     fetchAcceptedNominations();
   }, [eventId]);
+
+  const checkIfVoted = async () => {
+    const userInfo = JSON.parse(localStorage.getItem("userinfo")); // Fetch user info from local storage
+    const userId = userInfo ? userInfo._id : null;
+
+    if (!userId) {
+      toast.error("User not found.");
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/votes/check/${userId}/${eventId}`
+      );
+      console.log(response.data);
+      if (response.data.hasVoted) {
+        toast.error("You have already voted in this event.");
+        navigate("/events"); // Redirect if the user has already voted
+      }
+    } catch (error) {
+      console.error("Error checking if user has voted:", error);
+      if (error.response && error.response.status === 404) {
+        toast.error("Vote status not found."); // Specific error message for 404
+      } else {
+        toast.error("Failed to check vote status.");
+      }
+    }
+  };
 
   const handleCheckboxChange = (role, studentId) => {
     setSelectedStudent((prev) => ({
@@ -51,26 +81,21 @@ const VotingPhase = () => {
   };
 
   const handleSubmit = async () => {
-    if (hasVoted) {
-      toast.error("You have already voted in this event.");
+    const userInfo = JSON.parse(localStorage.getItem("userinfo")); // Fetch user info again to get the userId
+    const userId = userInfo ? userInfo._id : null;
+
+    if (!userId) {
+      toast.error("User not found.");
       return;
     }
 
     try {
-      const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-      const userId = userInfo ? userInfo._id : null;
-
       await axios.post(
         `http://localhost:5000/api/nominations/submit-votes/${eventId}`,
         { selectedStudent, userId } // Include userId in the request body
       );
-
-      toast.success("You have successfully voted!"); // Toast message for successful voting
-
-      // Redirect to events page after 5 seconds
-      setTimeout(() => {
-        navigate("/events");
-      }, 5000); // 5000 milliseconds = 5 seconds
+      toast.success("Votes submitted successfully!");
+      navigate("/events"); // Redirect to events page after successful submission
     } catch (error) {
       console.error("Error submitting votes:", error);
       if (error.response && error.response.status === 400) {

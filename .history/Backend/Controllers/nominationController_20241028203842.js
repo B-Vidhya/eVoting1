@@ -97,7 +97,18 @@ const submitVotes = async (req, res) => {
     res.status(500).json({ message: "Error submitting votes" });
   }
 };
+const checkIfVoted = async (req, res) => {
+  try {
+    const { eventId, userId } = req.params;
+    const existingVote = await Voter.findOne({ userId, eventId });
 
+    // Respond with whether the user has voted
+    res.status(200).json({ hasVoted: !!existingVote });
+  } catch (error) {
+    console.error("Error checking if user has voted:", error);
+    res.status(500).json({ message: "Error checking voting status" });
+  }
+};
 module.exports = {
   createNomination,
   getNominations,

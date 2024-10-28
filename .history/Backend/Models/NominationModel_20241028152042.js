@@ -9,10 +9,10 @@ const nominationSchema = new mongoose.Schema(
     cgpa: { type: Number, required: true },
     attendance: { type: Number, required: true },
     reason: { type: String, required: true },
-    image: { type: String },
-    eventId: { type: String, required: true },
+    image: { type: String }, // Storing base64 image or URL
+    eventId: { type: String, required: true }, // Associating nominations with events
     status: { type: String, default: "Pending" },
-    votes: { type: Number, default: 0 }, // New field to store vote counts
+    votes: { type: Number, default: 0 }, // Field to store vote count
   },
   { timestamps: true }
 );

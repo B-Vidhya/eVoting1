@@ -33,7 +33,26 @@ const VotingPhase = () => {
         toast.error("Failed to fetch accepted nominations.");
       }
     };
+
+    const checkIfVoted = async () => {
+      const userInfo = JSON.parse(localStorage.getItem("userinfo"));
+      const userId = userInfo ? userInfo._id : null;
+
+      if (userId) {
+        try {
+          const response = await axios.get(
+            `http://localhost:5000/api/nominations/voted/${eventId}/${userId}`
+          );
+          setHasVoted(response.data.hasVoted); // Set hasVoted based on response
+        } catch (error) {
+          console.error("Error checking if user has voted:", error);
+          toast.error("Failed to check voting status.");
+        }
+      }
+    };
+
     fetchAcceptedNominations();
+    checkIfVoted();
   }, [eventId]);
 
   const handleCheckboxChange = (role, studentId) => {
@@ -65,12 +84,8 @@ const VotingPhase = () => {
         { selectedStudent, userId } // Include userId in the request body
       );
 
-      toast.success("You have successfully voted!"); // Toast message for successful voting
-
-      // Redirect to events page after 5 seconds
-      setTimeout(() => {
-        navigate("/events");
-      }, 5000); // 5000 milliseconds = 5 seconds
+      toast.success("Votes submitted successfully!");
+      navigate("/events"); // Redirect to events page after successful submission
     } catch (error) {
       console.error("Error submitting votes:", error);
       if (error.response && error.response.status === 400) {

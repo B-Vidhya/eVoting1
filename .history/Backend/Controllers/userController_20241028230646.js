@@ -148,6 +148,7 @@ const verifyOtp = asyncHandler(async (req, res) => {
   }
 
   res.status(200).json({
+    message: "OTP sent to your email!",
     email: user.email,
     type: user.type,
   });

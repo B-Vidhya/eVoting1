@@ -31,7 +31,7 @@ const UserLoginPage = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/api/user/send-otp", { email });
+      await axios.post("http://localhost:5000/api/admin/send-otp", { email });
       setOtpSent(true);
       toast({
         title: "OTP Sent!",
@@ -44,7 +44,7 @@ const UserLoginPage = () => {
       startResendTimer(); // Start the resend timer
     } catch (error) {
       toast({
-        title: "USER NOT FOUND",
+        title: "Error sending OTP",
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -68,7 +68,7 @@ const UserLoginPage = () => {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/user/resend-otp", { email });
+      await axios.post("http://localhost:5000/api/admin/resend-otp", { email });
       toast({
         title: "OTP Resent!",
         status: "success",
@@ -103,7 +103,7 @@ const UserLoginPage = () => {
     }
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/user/verify-otp",
+        "http://localhost:5000/api/admin/login",
         { email, otp }
       );
       toast({
@@ -113,8 +113,8 @@ const UserLoginPage = () => {
         isClosable: true,
         position: "top",
       });
-      localStorage.setItem("userinfo", JSON.stringify(data));
-      navigate("/events");
+      localStorage.setItem("adminInfo", JSON.stringify(data));
+      navigate("/admin-dashboard");
     } catch (error) {
       toast({
         title: "Invalid OTP",

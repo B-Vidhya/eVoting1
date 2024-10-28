@@ -147,10 +147,7 @@ const verifyOtp = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "OTP expired." });
   }
 
-  res.status(200).json({
-    email: user.email,
-    type: user.type,
-  });
+  res.status(200).json({ message: "OTP verified!" });
 });
 
 module.exports = {

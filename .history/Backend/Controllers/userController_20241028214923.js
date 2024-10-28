@@ -4,7 +4,6 @@ const User = require("../Models/LoginModel");
 const OTP = require("../Models/OtpModel"); // Import the OTP model
 const nodemailer = require("nodemailer"); // Import Nodemailer
 const crypto = require("crypto"); // To generate OTPs
-
 const app = express();
 app.use(express.json());
 
@@ -57,7 +56,7 @@ const authUser = asyncHandler(async (req, res) => {
   // Validate the user credentials
   if (user && user.password === password) {
     // Generate a random OTP
-    const otp = crypto.randomBytes(3).toString("hex"); // Generates a 6-digit OTP
+    const otp = crypto.randomBytes(3).toString("hex"); // Generates a 6 digit OTP
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // OTP valid for 10 minutes
 
     // Save OTP to database
@@ -65,7 +64,7 @@ const authUser = asyncHandler(async (req, res) => {
 
     // Send OTP email
     await transporter.sendMail({
-      from: "collegevoting2105@gmail.com",
+      from: process.env.EMAIL,
       to: email,
       subject: "Your OTP Code",
       text: `Your OTP code is: ${otp}. It is valid for 10 minutes.`,
@@ -98,7 +97,7 @@ const sendOtp = asyncHandler(async (req, res) => {
   await OTP.create({ email, otp, expiresAt });
 
   await transporter.sendMail({
-    from: "collegevoting2105@gmail.com", // Replace with your email
+    from: process.env.EMAIL,
     to: email,
     subject: "Your OTP Code",
     text: `Your OTP code is: ${otp}. It is valid for 10 minutes.`,
@@ -124,7 +123,7 @@ const resendOtp = asyncHandler(async (req, res) => {
   await OTP.updateOne({ email }, { otp, expiresAt });
 
   await transporter.sendMail({
-    from: "collegevoting2105@gmail.com", // Replace with your email
+    from: process.env.EMAIL,
     to: email,
     subject: "Your OTP Code",
     text: `Your new OTP code is: ${otp}. It is valid for 10 minutes.`,
@@ -136,7 +135,7 @@ const resendOtp = asyncHandler(async (req, res) => {
 // Verify OTP
 const verifyOtp = asyncHandler(async (req, res) => {
   const { email, otp } = req.body;
-  const user = await User.findOne({ email });
+
   const otpRecord = await OTP.findOne({ email, otp });
   if (!otpRecord) {
     return res.status(400).json({ message: "Invalid or expired OTP." });
@@ -147,16 +146,7 @@ const verifyOtp = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "OTP expired." });
   }
 
-  res.status(200).json({
-    email: user.email,
-    type: user.type,
-  });
+  res.status(200).json({ message: "OTP verified!" });
 });
 
-module.exports = {
-  authUser,
-  registerUser,
-  sendOtp,
-  resendOtp,
-  verifyOtp,
-};
+module.exports = { authUser, registerUser, sendOtp, resendOtp, verifyOtp };
