@@ -13,7 +13,7 @@ const AdminClick = () => {
   };
 
   const handleResultsClick = () => {
-    navigate(`/admin/results/${eventId}`); // Navigate to results with eventId
+    navigate('/admin/results');
   };
 
   const handleActiveClick = () => {

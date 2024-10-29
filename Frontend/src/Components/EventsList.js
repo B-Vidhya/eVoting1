@@ -54,6 +54,7 @@ const EventsList = () => {
   }, [token, navigate]);
 
   const handleEventClick = (event) => {
+    const today = new Date();
     if (userType === "admin") {
       navigate(`/admin/events/${event._id}`);
     } else {

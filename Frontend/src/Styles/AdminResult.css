@@ -1,0 +1,148 @@
+/* AdminResult.css
+.admin-result-page {
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f2fa;
+  }
+  
+  .header, .footer {
+    background-color: #4b2c91;
+    color: #ffffff;
+    padding: 15px;
+    font-weight: bold;
+  }
+  
+  .candidate-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .candidate-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .vote-count {
+    font-size: 1.2em;
+    color: #6c4ccf;
+  } 
+    */
+
+  
+/* General Styling */
+.results-list {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f7ff;
+  }
+  
+  .results-container {
+    flex: 1;
+  }
+  
+  .role-container {
+    margin-bottom: 40px;
+  }
+  
+  .role-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4f3d84;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .candidates-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .candidate-box {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .candidate-box:hover {
+    background-color: #f2ebff;
+    transform: scale(1.05);
+    z-index: 1;
+  }
+  
+  .candidate-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #4f3d84;
+  }
+  
+  .candidate-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .candidate-description {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+  
+  /* Hover details styling */
+  .candidate-extra-details {
+    font-size: 14px;
+    color: #4f3d84;
+    background-color: #e9e3f7;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .candidate-box:hover .candidate-extra-details {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .candidate-vote-bar {
+    margin-top: 10px;
+    height: 20px;
+    background-color: #e0d4ff;
+  }
+  
+  .admin-footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  
