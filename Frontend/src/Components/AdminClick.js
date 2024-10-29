@@ -1,67 +1,15 @@
-// import React from 'react';
-// import { useNavigate, useParams } from 'react-router-dom';
-// import { Container, Navbar, Nav } from 'react-bootstrap';
-// import '../Styles/AdminClick.css';
-
-// const AdminClick = () => {
-//   const navigate = useNavigate();
-//   const { eventId } = useParams();
-
-//   return (
-//     <div className="admin-container">
-//       {/* Header */}
-//       <Navbar bg="dark" variant="dark" expand="lg">
-//         <Container>
-//           <Navbar.Brand href="#">Admin Panel</Navbar.Brand>
-//           <Nav className="ml-auto">
-//             <Nav.Link href="#">Home</Nav.Link>
-//             <Nav.Link href="#">About</Nav.Link>
-//             <Nav.Link href="#">Contact</Nav.Link>
-//           </Nav>
-//         </Container>
-//       </Navbar>
-
-//       {/* Main content */}
-//       <div className="admin-content">
-//         <h2 className="text-center mt-4">Manage Event</h2>
-//         <div className="admin-buttons">
-//           <button
-//             className="admin-button"
-//            // onClick={() => navigate(`/admin/nominations/${eventId}`)}
-//            onClick={() => navigate('/admin/nominations')}
-//           >
-//             Nominations List
-//           </button>
-//           <button
-//             className="admin-button"
-//             //onClick={() => navigate(`/admin/results/${eventId}`)}
-//             onClick={() => navigate('/admin/results')}
-
-//           >
-//             Result List
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Footer */}
-//       <footer className="admin-footer">
-//         Admin Panel © 2024
-//       </footer>
-//     </div>
-//   );
-// };
-
-// export default AdminClick;
-import React from 'react';
-import { Container, Row, Col, Button, Navbar, Nav } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import '../Styles/AdminClick.css';
+import React from "react";
+import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import "../Styles/AdminClick.css";
 
 const AdminClick = () => {
   const navigate = useNavigate();
+  const { eventId } = useParams(); // Retrieve the eventId from the URL
 
+  // Handlers for buttons
   const handleNominationsClick = () => {
-    navigate('/admin/nominations'); // Corrected path
+    navigate(`/admin/nominations/${eventId}`); // Navigate to nominations with eventId
   };
 
   const handleResultsClick = () => {
@@ -70,10 +18,12 @@ const AdminClick = () => {
 
   const handleActiveClick = () => {
     console.log("Event marked as Active");
+    // Logic to mark event as active can be added here
   };
 
   const handleInactiveClick = () => {
     console.log("Event marked as Inactive");
+    // Logic to mark event as inactive can be added here
   };
 
   return (
@@ -102,10 +52,16 @@ const AdminClick = () => {
               <Button onClick={handleResultsClick} className="btn-custom">
                 Results
               </Button>
-              <Button onClick={handleActiveClick} className="btn-custom active-btn">
+              <Button
+                onClick={handleActiveClick}
+                className="btn-custom active-btn"
+              >
                 Active
               </Button>
-              <Button onClick={handleInactiveClick} className="btn-custom inactive-btn">
+              <Button
+                onClick={handleInactiveClick}
+                className="btn-custom inactive-btn"
+              >
                 Inactive
               </Button>
             </div>
@@ -124,5 +80,3 @@ const AdminClick = () => {
 };
 
 export default AdminClick;
-
-
