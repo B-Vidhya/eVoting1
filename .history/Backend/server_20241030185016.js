@@ -8,7 +8,6 @@ const colors = require("colors");
 const userRoutes = require("./Routes/userRoutes");
 const eventRoutes = require("./Routes/eventRoutes"); // Add this line
 const nominationRoutes = require("./Routes/nominationRoutes");
-const resultRoutes = require("./Routes/resultRoutes");
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());
@@ -16,7 +15,6 @@ connectDB();
 app.use("/api/user", userRoutes);
 app.use("/api/events", eventRoutes); // Add this line
 app.use("/api/nominations", nominationRoutes);
-app.use("/api/results", resultRoutes);
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`.yellow.bold);
 });

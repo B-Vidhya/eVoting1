@@ -8,7 +8,6 @@ const colors = require("colors");
 const userRoutes = require("./Routes/userRoutes");
 const eventRoutes = require("./Routes/eventRoutes"); // Add this line
 const nominationRoutes = require("./Routes/nominationRoutes");
-const resultRoutes = require("./Routes/resultRoutes");
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());

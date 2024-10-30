@@ -39,16 +39,6 @@ const UserResult = () => {
     fetchResults();
   }, [eventId]);
 
-  // Group winners by role
-  const groupedByRole = winners.reduce((groups, candidate) => {
-    const { role } = candidate;
-    if (!groups[role]) {
-      groups[role] = [];
-    }
-    groups[role].push(candidate);
-    return groups;
-  }, {});
-
   return (
     <div className="user-results-page">
       <ToastContainer />
@@ -66,29 +56,20 @@ const UserResult = () => {
 
       <Container className="my-5">
         <h2 className="text-center mb-4">Final Results</h2>
-        {Object.keys(groupedByRole).length > 0 ? (
-          Object.entries(groupedByRole).map(([role, candidates]) => (
-            <div key={role} className="role-group">
-              <h3 className="role-title">{role}</h3>
-              <div className="candidates-row">
-                {candidates.map((candidate) => (
-                  <div className="candidate-box" key={candidate._id}>
-                    <img
-                      src={candidate.image}
-                      alt="Candidate"
-                      className="candidate-photo"
-                    />
-                    <div className="candidate-info">
-                      <div className="candidate-name">{candidate.name}</div>
-                      <div className="candidate-role">
-                        Role: {candidate.role}
-                      </div>
-                      <div className="candidate-vote-count">
-                        Votes Received: {candidate.votes}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+        {winners.length > 0 ? (
+          winners.map((candidate) => (
+            <div className="candidate-box" key={candidate._id}>
+              <img
+                src={candidate.image}
+                alt="Candidate"
+                className="candidate-photo"
+              />
+              <div className="candidate-info">
+                <div className="candidate-name">{candidate.name}</div>
+                <div className="candidate-role">Role: {candidate.role}</div>
+                <div className="candidate-vote-count">
+                  Votes Received: {candidate.votes}
+                </div>
               </div>
             </div>
           ))

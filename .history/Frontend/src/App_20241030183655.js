@@ -63,7 +63,7 @@ function App() {
         <Route path="/admin/results/:eventId" element={<AdminResult />} />
 
         {/* User Result page */}
-        <Route path="/user/results/:eventId" element={<UserResult />} />
+        <Route path="/user/results" element={<UserResult />} />
 
         {/* Voting and Result Pages */}
         <Route path="/voting/:eventId" element={<VotingPhase />} />

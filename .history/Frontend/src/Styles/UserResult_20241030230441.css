@@ -5,33 +5,16 @@
   background-color: #f9f7ff;
 }
 
-.role-group {
-  margin-bottom: 40px;
-}
-
-.role-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #4f3d84;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.candidates-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
 .candidate-box {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  width: 280px;
-  text-align: center;
+  width: 300px;
+  margin: 0 auto 20px auto;
 }
 
 .candidate-box:hover {
@@ -44,6 +27,7 @@
   height: 80px;
   border-radius: 50%;
   margin: 0 auto 10px;
+  display: block;
   border: 2px solid #4f3d84;
 }
 
