@@ -113,18 +113,21 @@ const AdminNominationsList = () => {
   };
 
   return (
+    
     <div className="nomination-list">
       {/* Header */}
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <Navbar.Brand href="#">Admin Panel</Navbar.Brand>
           <Nav className="ml-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
+            {/* <Button variant="outline-light" onClick={handleLogout}>
+              Logout
+            </Button> */}
           </Nav>
         </Container>
       </Navbar>
+     
 
       {/* Nominations list */}
       <Container className="my-5">
@@ -172,8 +175,17 @@ const AdminNominationsList = () => {
       </Container>
 
       {/* Footer */}
-      <footer className="admin-footer">Admin Panel © 2024</footer>
+      <footer className="footer">
+        <div className="footer-content">
+          <h4>Contact Us</h4>
+          <p>Email: collegevoting2105@gmail.com</p>
+          <p>Phone: +123 456 7890</p>
+          <p>Address: 123 University Ave, City, Country</p>
+         
+        </div>
+      </footer>
     </div>
+
   );
 };
 

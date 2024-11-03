@@ -73,7 +73,7 @@ const Home = () => {
       <div className="content-section">
         <h2>Welcome to the Campus Voting Portal!</h2>
         <p>
-          Our platform is designed to facilitate seamless and transparent elections for various campus events and positions. This website enables students to actively participate in the nomination and voting process for key leadership roles in upcoming science, tech, and cultural fests. We aim to ensure fair elections, empowering students to choose representatives who will lead these events successfully.
+          Our platform is designed to facilitate seamless and transparent elections for various campus events and positions. This website enables students to actively participate in the nomination and voting process for key leadership roles in upcoming science, tech, cultural, and more fests. We aim to ensure fair elections, empowering students to choose representatives who will lead these events successfully.
         </p>
         <h3>How It Works</h3>
         <h4>Nomination Phase:</h4>
@@ -122,10 +122,10 @@ const Home = () => {
       <footer className="footer">
         <div className="footer-content">
           <h4>Contact Us</h4>
-          <p>Email: campusvoting@university.com</p>
+          <p>Email: collegevoting2105@gmail.com</p>
           <p>Phone: +123 456 7890</p>
           <p>Address: 123 University Ave, City, Country</p>
-          <p>Follow us on social media for updates and news!</p>
+         
         </div>
       </footer>
     </div>

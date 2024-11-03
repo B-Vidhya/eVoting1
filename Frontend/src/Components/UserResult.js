@@ -57,9 +57,7 @@ const UserResult = () => {
         <Container>
           <Navbar.Brand href="#">User Panel</Navbar.Brand>
           <Nav className="ml-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
+          <Nav.Link href="/home">Home</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -96,8 +94,16 @@ const UserResult = () => {
           <div className="text-center">No results available.</div>
         )}
       </Container>
-
-      <footer className="user-footer">User Panel © 2024</footer>
+      {/* Footer Section */}
+      <footer className="footer">
+        <div className="footer-content">
+          <h4>Contact Us</h4>
+          <p>Email: collegevoting2105@gmail.com</p>
+          <p>Phone: +123 456 7890</p>
+          <p>Address: 123 University Ave, City, Country</p>
+         
+        </div>
+      </footer>
     </div>
   );
 };
