@@ -143,14 +143,14 @@ const AdminNominationsList = () => {
             <div className="student-info">
               <div className="student-name">{student.name}</div>
               <div className="student-role">Role: {student.role}</div>
-              <div className="student-details">
+              {/* <div className="student-details">
                 {student.branch} - Section {student.section}
-              </div>
+              </div> */}
               <div className="student-details">Phone: {student.phone}</div>
 
               {hoveredStudent === student._id && (
                 <div className="student-extra-details">
-                  <div>{student.description}</div>
+                  <div>{student.reason}</div>
                   <div>CGPA: {student.cgpa}</div>
                   <div>Attendance: {student.attendance}</div>
                 </div>

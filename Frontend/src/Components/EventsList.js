@@ -64,7 +64,7 @@ const EventsList = () => {
       } else if (today >= electionStartDate && today <= electionEndDate) {
         navigate(`/voting/${event._id}`);
       } else if (today >= resultsDate) {
-        navigate(`/user/results/${event._id}`);
+        navigate(`/user/eventClick/${event._id}`);
       } else {
         navigate("/inactive");
       }

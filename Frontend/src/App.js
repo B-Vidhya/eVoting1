@@ -14,6 +14,8 @@ import UserLoginPage from "./Components/UserLoginPage";
 import VotingPhase from "./Components/VotingPhase";
 import AdminResult from "./Components/AdminResult";
 import UserResult from "./Components/UserResult"; // Not used in routes; consider removing
+import UserResultPhase from "./Components/UserResultPhase";
+import UserFinalResult from "./Components/UserFinalResult";
 
 function App() {
   useEffect(() => {
@@ -64,6 +66,10 @@ function App() {
 
         {/* User Result page */}
         <Route path="/user/results/:eventId" element={<UserResult />} />
+        <Route path="/user/eventClick/:eventId" element={<UserResultPhase />} />
+        <Route path="/user/resultfinal/:eventId" element={<UserFinalResult />} />
+       
+
 
         {/* Voting and Result Pages */}
         <Route path="/voting/:eventId" element={<VotingPhase />} />
