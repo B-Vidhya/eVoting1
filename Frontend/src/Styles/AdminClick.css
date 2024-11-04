@@ -1,57 +1,74 @@
-.admin-click-container {
-  min-height: calc(100vh - 120px);
-  /* Adjusted to keep footer at the bottom */
+/* Background styling */
+.admin-click-bg {
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+  min-height: 80vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  align-items: center;
+  padding: 40px 0;
 }
 
+/* Smaller container styling */
+.admin-click-container {
+  width: 80%;  /* Reduce width to make it smaller */
+  max-width: 800px; /* Limit the maximum width */
+  padding: 30px 20px;
+  background-color: #ffffffcc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Title and Subtitle */
 .admin-title {
-  font-size: 2.5rem;
-  color: #6b4fad;
-  /* Purplish color for the title */
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #4f3d84;
 }
 
+.admin-subtitle {
+  font-size: 1.2rem;
+  color: #6d6b6e;
+  margin-bottom: 30px;
+}
+
+/* Button styling */
 .button-group {
   display: flex;
+  gap: 20px;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
-.btn-custom {
-  background-color: #9370DB;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1.2rem;
+.btn-nominations,
+.btn-results {
+  background-color: #4f3d84;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.btn-custom:hover {
-  background-color: #6b4fad;
-  /* Darker purplish shade on hover */
+.btn-nominations:hover,
+.btn-results:hover {
+  background-color: #3c2d66;
+  transform: translateY(-3px);
 }
 
-.active-btn {
-  background-color: #4B0082;
-  /* Active button in darker purple */
+/* Footer styling */
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
 }
 
-.inactive-btn {
-  background-color: #8A2BE2;
-  /* Inactive button in a different shade of purple */
+.footer-content h4 {
+  margin-bottom: 10px;
 }
 
-.btn-custom:focus,
-.btn-custom:active {
-  outline: none;
-  box-shadow: none;
-}
-
-footer {
-  margin-top: auto;
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
 }

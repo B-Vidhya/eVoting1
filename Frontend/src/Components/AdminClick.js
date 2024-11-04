@@ -9,21 +9,11 @@ const AdminClick = () => {
 
   // Handlers for buttons
   const handleNominationsClick = () => {
-    navigate(`/admin/nominations/${eventId}`); // Navigate to nominations with eventId
+    navigate(`/admin/nominations/${eventId}`);
   };
 
   const handleResultsClick = () => {
     navigate(`/admin/results/${eventId}`);
-  };
-
-  const handleActiveClick = () => {
-    console.log("Event marked as Active");
-    // Logic to mark event as active can be added here
-  };
-
-  const handleInactiveClick = () => {
-    console.log("Event marked as Inactive");
-    // Logic to mark event as inactive can be added here
   };
 
   return (
@@ -31,49 +21,44 @@ const AdminClick = () => {
       {/* Header */}
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="#">Campus Voting System - Admin</Navbar.Brand>
+          <Navbar.Brand href="#">Admin Panel</Navbar.Brand>
           <Nav className="ml-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       {/* Main Content */}
-      <Container className="admin-click-container">
-        <Row className="justify-content-center text-center">
-          <Col md={8}>
-            <h2 className="admin-title">Admin Dashboard</h2>
-            <div className="button-group">
-              <Button onClick={handleNominationsClick} className="btn-custom">
-                Nominations List
-              </Button>
-              <Button onClick={handleResultsClick} className="btn-custom">
-                Results
-              </Button>
-              <Button
-                onClick={handleActiveClick}
-                className="btn-custom active-btn"
-              >
-                Active
-              </Button>
-              <Button
-                onClick={handleInactiveClick}
-                className="btn-custom inactive-btn"
-              >
-                Inactive
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className="admin-click-bg">
+        <Container className="admin-click-container">
+          <Row className="justify-content-center text-center">
+            <Col md={8}>
+              <h2 className="admin-title">Admin Dashboard</h2>
+              <p className="admin-subtitle">
+                Manage campus elections with live nominations and real-time results.
+              </p>
+              <div className="button-group">
+                <Button onClick={handleNominationsClick} className="btn-nominations">
+                  Nominations List
+                </Button>
+                <Button onClick={handleResultsClick} className="btn-results">
+                  Results
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
       {/* Footer */}
-      <footer className="footer-purple text-white text-center py-3">
-        <Container>
-          <p>&copy; 2024 Campus Voting System. All rights reserved.</p>
-        </Container>
+      <footer className="footer">
+        <div className="footer-content">
+          <h4>Contact Us</h4>
+          <p>Email: collegevoting2105@gmail.com </p>
+          <p>Phone: +123 456 7890</p>
+          <p>Address: 123 University Ave, City, Country</p>
+     
+        </div>
       </footer>
     </>
   );
