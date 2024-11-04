@@ -63,7 +63,7 @@ const UserResult = () => {
       </Navbar>
 
       <Container className="my-5">
-        <h2 className="text-center mb-4">Results Overview</h2>
+        <h2 className="text-center mb-4">Final Results</h2>
         {Object.keys(groupedByRole).length > 0 ? (
           Object.entries(groupedByRole).map(([role, candidates]) => (
             <div key={role} className="role-group">

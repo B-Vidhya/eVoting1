@@ -3,17 +3,17 @@ import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Styles/AdminClick.css";
 
-const AdminClick = () => {
+const UserResultPhase = () => {
   const navigate = useNavigate();
   const { eventId } = useParams(); // Retrieve the eventId from the URL
 
   // Handlers for buttons
-  const handleNominationsClick = () => {
-    navigate(`/admin/nominations/${eventId}`);
+  const handleResultsOverview = () => {
+    navigate(`/user/results/${eventId}`);
   };
 
-  const handleResultsClick = () => {
-    navigate(`/admin/results/${eventId}`);
+  const handleFinalResult = () => {
+    navigate(`/user/resultfinal/${eventId}`);
   };
 
   return (
@@ -33,16 +33,19 @@ const AdminClick = () => {
         <Container className="admin-click-container">
           <Row className="justify-content-center text-center">
             <Col md={8}>
-              <h2 className="admin-title">Admin Dashboard</h2>
+              <h2 className="admin-title">User Dashboard</h2>
               <p className="admin-subtitle">
-                Manage campus elections with live nominations and real-time results.
+                Check your Results Overview and Final Results
               </p>
               <div className="button-group">
-                <Button onClick={handleNominationsClick} className="btn-nominations">
-                  Nominations List
+                <Button
+                  onClick={handleResultsOverview}
+                  className="btn-nominations"
+                >
+                  Results Overview
                 </Button>
-                <Button onClick={handleResultsClick} className="btn-results">
-                  Results
+                <Button onClick={handleFinalResult} className="btn-results">
+                  Final Results
                 </Button>
               </div>
             </Col>
@@ -57,11 +60,10 @@ const AdminClick = () => {
           <p>Email: collegevoting2105@gmail.com </p>
           <p>Phone: +123 456 7890</p>
           <p>Address: 123 University Ave, City, Country</p>
-     
         </div>
       </footer>
     </>
   );
 };
 
-export default AdminClick;
+export default UserResultPhase;

@@ -57,13 +57,13 @@ const UserResult = () => {
         <Container>
           <Navbar.Brand href="#">User Panel</Navbar.Brand>
           <Nav className="ml-auto">
-          <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <Container className="my-5">
-        <h2 className="text-center mb-4">Results Overview</h2>
+        <h2 className="text-center mb-4">Final Results</h2>
         {Object.keys(groupedByRole).length > 0 ? (
           Object.entries(groupedByRole).map(([role, candidates]) => (
             <div key={role} className="role-group">
@@ -101,7 +101,6 @@ const UserResult = () => {
           <p>Email: collegevoting2105@gmail.com</p>
           <p>Phone: +123 456 7890</p>
           <p>Address: 123 University Ave, City, Country</p>
-         
         </div>
       </footer>
     </div>
