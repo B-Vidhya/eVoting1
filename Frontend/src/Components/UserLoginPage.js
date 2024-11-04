@@ -209,7 +209,9 @@ const UserLoginPage = () => {
                     onChange={(e) => setOtp(e.target.value)}
                   />
                 </Form.Group>
-
+                <div class="note">
+                       NOTE: Please check your junk mails too
+                   </div>
                 <Button
                   variant="primary"
                   type="submit"

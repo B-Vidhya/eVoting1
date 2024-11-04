@@ -143,11 +143,11 @@ const VotingPhase = () => {
                 />
                 <div className="student-info">
                   <div className="student-name">{student.name}</div>
-                  <div className="student-details">
+                  {/* <div className="student-details">
                     {student.branch} - Section {student.section}
-                  </div>
+                  </div> */}
                   <div className="student-description">
-                    {student.description}
+                    {student.reason}
                   </div>
                 </div>
                 <label className="checkbox-container">
