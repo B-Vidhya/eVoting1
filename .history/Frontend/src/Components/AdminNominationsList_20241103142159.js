@@ -147,6 +147,7 @@ const AdminNominationsList = () => {
 
               {hoveredStudent === student._id && (
                 <div className="student-extra-details">
+                  <div>{student.description}</div>
                   <div>CGPA: {student.cgpa}</div>
                   <div>Attendance: {student.attendance}</div>
                   <div>Description: {student.reason}</div>
